@@ -13,11 +13,15 @@ Download lib from: https://openjfx.io/ unzip it somewhere and link to it with th
 And than to run:
 
 `javac --module-path %PATH_TO_FX% --add-modules javafx.controls HelloFX.java`
+
 `javac --module-path %PATH_TO_FX% --add-modules javafx.controls,javafx.fxml HelloFX.java`
+
 `java --module-path %PATH_TO_FX% --add-modules javafx.controls HelloFX`
 
 ## (Linux):
 
 `javac --module-path $PATH_TO_FX --add-modules javafx.controls HelloFX.java`
+
 `javac --module-path $PATH_TO_FX --add-modules javafx.controls,javafx.fxml HelloFX.java`
+
 `java --module-path $PATH_TO_FX --add-modules javafx.controls HelloFX`
