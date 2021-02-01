@@ -4,7 +4,7 @@
 
 # How to build and run the app:
 
-## (Winsows):
+## (Windows):
 
 Download lib from: https://openjfx.io/ unzip it somewhere and link to it with this setpath:
 
@@ -12,16 +12,16 @@ Download lib from: https://openjfx.io/ unzip it somewhere and link to it with th
 
 And than to run:
 
-`javac --module-path %PATH_TO_FX% --add-modules javafx.controls HelloFX.java`
+`javac --module-path %PATH_TO_FX% --add-modules javafx.controls MenuFX.java`
 
-`javac --module-path %PATH_TO_FX% --add-modules javafx.controls,javafx.fxml HelloFX.java`
+`javac --module-path %PATH_TO_FX% --add-modules javafx.controls,javafx.fxml MenuFX.java`
 
-`java --module-path %PATH_TO_FX% --add-modules javafx.controls HelloFX`
+`java --module-path %PATH_TO_FX% --add-modules javafx.controls MenuFX`
 
 ## (Linux):
 
-`javac --module-path $PATH_TO_FX --add-modules javafx.controls HelloFX.java`
+`javac --module-path $PATH_TO_FX --add-modules javafx.controls MenuFX.java`
 
-`javac --module-path $PATH_TO_FX --add-modules javafx.controls,javafx.fxml HelloFX.java`
+`javac --module-path $PATH_TO_FX --add-modules javafx.controls,javafx.fxml MenuFX.java`
 
-`java --module-path $PATH_TO_FX --add-modules javafx.controls HelloFX`
+`java --module-path $PATH_TO_FX --add-modules javafx.controls MenuFX`
