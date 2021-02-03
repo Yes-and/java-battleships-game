@@ -12,7 +12,7 @@ import CSA.Battlefield;
 
 public class GameFX {
   private Battlefield PlayerField = new Battlefield();
-  private Battlefield EnenyField = new Battlefield();
+  private Battlefield EnemyField = new Battlefield();
   private final GridPane rootPane;
 
   public GameFX(Battlefield playerField, Stage primaryStage, TilePane menuRoot) {
@@ -29,7 +29,7 @@ public class GameFX {
     });
     rootPane.add(mainMenuBtn, 1, 0);
 
-    Label playerGridL = new Label("Player grid:");
+    Label playerGridL = new Label("Your grid:");
     playerGridL.setFont(font);
     rootPane.add(playerGridL, 0, 1);
 
@@ -37,17 +37,15 @@ public class GameFX {
 
     for(int x = 0; x < 8; x++){
       for(int y = 0; y < 8; y++){
-        Button shipOneBtn = new Button(x + " " + y);
-        shipOneBtn.setFont(font);
-        shipOneBtn.setOnAction(actionEvent -> {
-        });
-        playerGridPane.add(shipOneBtn, x, y);
+        Button shipBtn = new Button(PlayerField.At(x, y) + "");
+        shipBtn.setFont(font);
+        playerGridPane.add(shipBtn, x, y);
       }
     }
 
     rootPane.add(playerGridPane, 0, 2);
 
-    Label enemyGridL = new Label("Enemy grid:");
+    Label enemyGridL = new Label("PC grid:");
     enemyGridL.setFont(font);
     rootPane.add(enemyGridL, 3, 1);
 
@@ -55,15 +53,19 @@ public class GameFX {
 
     for(int x = 0; x < 8; x++){
       for(int y = 0; y < 8; y++){
-        Button shipOneBtn = new Button(x + " " + y);
-        shipOneBtn.setFont(font);
-        shipOneBtn.setOnAction(actionEvent -> {
+        Button shipBtn = new Button(EnemyField.At(x, y) + "");
+        shipBtn.setFont(font);
+        shipBtn.setOnAction(actionEvent -> {
         });
-        enemyGridPane.add(shipOneBtn, x, y);
+        enemyGridPane.add(shipBtn, x, y);
       }
     }
 
     rootPane.add(enemyGridPane, 3, 2);
+
+    Label statusL = new Label("Your turn - please click on PC grid");
+    statusL.setFont(font);
+    rootPane.add(statusL, 1, 3);
   }
   public GridPane getRootPane() {
     return rootPane;

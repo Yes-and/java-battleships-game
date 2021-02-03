@@ -30,9 +30,14 @@ public class Battlefield {
       {0,0,0,0,0,0,0,0}};
   }
 
-  // Get player's battlefield
+  // Get the grid
   public int[][] GetGrid() {
     return this.Grid;
+  }
+
+  // Get a spot
+  public int At(int x, int y) {
+    return this.Grid[x][y];
   }
 
   // Create a new ship
