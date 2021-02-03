@@ -66,5 +66,27 @@ public class Battlefield {
         }
     }
 
+    // Compare two grids and return false if a collision is found
+    public boolean Compare(int[][] grid, int[][] gridtwo) {
+        boolean collide = false;
+        for(int y = 0; y < 8; y++) {
+            for(int x = 0; x < 8; x++) {
+                while(collide = false) {
 
+                    if (grid[x][y] != gridtwo[x][y]) {
+                        grid[x][y] = gridtwo[x][y];
+                    } else {
+                        collide = true;
+                    }
+
+                }
+            }
+        }
+
+        if(collide = true) {
+            return false;
+        } else {
+                return true;
+        }
+    }
 }
