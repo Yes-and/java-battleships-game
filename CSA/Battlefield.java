@@ -61,7 +61,7 @@ public class Battlefield {
     public void toStringOwnB() {
         for (int y = 0; y < 8; y++) {
             for (int x = 0; x < 8; x++) {
-                System.out.println(this.PopulatedBattlefield;[x][y])
+                System.out.println(this.PopulatedBattlefield[x][y]);
             }
         }
     }
