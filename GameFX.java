@@ -6,20 +6,26 @@ import javafx.scene.layout.TilePane;
 import javafx.stage.Stage;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import CSA.Battlefield;
 
 public class GameFX {
+  private Battlefield PlayerField = new Battlefield();
+  private Battlefield EnenyField = new Battlefield();
   private final TilePane rootPane;
 
-  public GameFX(Stage primaryStage, TilePane menuRoot) {
+  public GameFX(Battlefield playerField, Stage primaryStage, TilePane menuRoot) {
+    this.PlayerField = playerField;
+
     rootPane = new TilePane();
 
-    Button startGameBtn = new Button("Quit to main menu");
     Font font = Font.font("comic sans ms", FontWeight.BOLD, 36);
-    startGameBtn.setFont(font);
-    startGameBtn.setOnAction(actionEvent -> {
+
+    Button mainMenuBtn = new Button("Quit to main menu");
+    mainMenuBtn.setFont(font);
+    mainMenuBtn.setOnAction(actionEvent -> {
       primaryStage.getScene().setRoot(menuRoot);
     });
-    rootPane.getChildren().add(startGameBtn);
+    rootPane.getChildren().add(mainMenuBtn);
   }
   public TilePane getRootPane() {
     return rootPane;

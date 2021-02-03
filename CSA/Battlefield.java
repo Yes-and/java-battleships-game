@@ -1,92 +1,69 @@
 package CSA;
 
 public class Battlefield {
-    
-    private int[][] DefaultBattlefield = {{0,0,0,0,0,0,0,0},
-    {0,0,0,0,0,0,0,0},
-    {0,0,0,0,0,0,0,0},
-    {0,0,0,0,0,0,0,0},
-    {0,0,0,0,0,0,0,0},
-    {0,0,0,0,0,0,0,0},
-    {0,0,0,0,0,0,0,0},
-    {0,0,0,0,0,0,0,0}};
+  private int[][] Grid = new int[8][8];
 
-    private int[][] PopulatedBattlefield = new int[8][8];
+  public Battlefield() {
+    this.Randomize();
+  }
 
-    private int[][] SpottedBattlefield = new int [8][8];
+  // Place all ships on the grid randomly
+  public void Randomize() {
+    this.ClearField();
 
-    private int[][] EnemiesBattlefield = new int [8][8];
+    this.Grid = this.MakeShip(this.Grid, 2, 1);
+    this.Grid = this.MakeShip(this.Grid, 3, 2);
+    this.Grid = this.MakeShip(this.Grid, 3, 3);
+    this.Grid = this.MakeShip(this.Grid, 4, 4);
+    this.Grid = this.MakeShip(this.Grid, 5, 5);
+  }
 
-    public Battlefield() {
+  // Clear all ships from the field
+  public void ClearField() {
+    this.Grid = new int[][]{{0,0,0,0,0,0,0,0},
+      {0,0,0,0,0,0,0,0},
+      {0,0,0,0,0,0,0,0},
+      {0,0,0,0,0,0,0,0},
+      {0,0,0,0,0,0,0,0},
+      {0,0,0,0,0,0,0,0},
+      {0,0,0,0,0,0,0,0},
+      {0,0,0,0,0,0,0,0}};
+  }
 
+  // Get player's battlefield
+  public int[][] GetGrid() {
+    return this.Grid;
+  }
+
+  // Create a new ship
+  public int[][] MakeShip(int[][] grid, int length, int ID) {
+    Boolean isHorizontal = Math.random() > 0.5;
+
+    int x = (int)Math.floor(Math.random() * (8 - (isHorizontal ? length : 0)));
+    int y = (int)Math.floor(Math.random()* (8 - (!isHorizontal ? length : 0)));
+
+    for(int i = 0; i < length; i++) {
+      if(isHorizontal) x++;
+      else y++;
+
+      grid[x][y] = ID;
     }
 
-    // Get player's battlefield
-    public int[][] GetOwnShip() {
-        return this.PopulatedBattlefield;
+    return grid;
+  }
+
+  // Convert battlefield int[8][8] to readable string
+  public String toString() {
+    String str = "";
+
+    for (int y = 0; y < 8; y++) {
+      for (int x = 0; x < 8; x++) {
+        str += this.Grid[x][y];
+      }
+
+      str += "\n";
     }
 
-    // Get the confirmed hits/misses
-    public int[][] GetSpotShip() {
-        return this.SpottedBattlefield;
-    }
-
-    // Ship setter for player's battlefield
-    public void SetOwnShip(int [][] grid) {
-        this.PopulatedBattlefield = grid;
-    }
-
-    // Create a new ship
-    public int[][] MakeShip(int[][] grid, int length, int ID) {
-
-        Boolean isHorizontal = Math.random() > 0.5;
-
-        int x = (int)Math.floor(Math.random() * (8 - (isHorizontal ? length : 0)));
-        int y = (int)Math.floor(Math.random()* (8 - (!isHorizontal ? length : 0)));
-
-        for(int i = 0; i < length; i++) {
-            if(isHorizontal) x++;
-            else {
-                y++;
-            }
-
-            grid[x][y] = ID;
-        }
-
-        return grid;
-
-    }
-
-    // Show own battlefield in console
-    public void toStringOwnB() {
-        for (int y = 0; y < 8; y++) {
-            for (int x = 0; x < 8; x++) {
-                System.out.println(this.PopulatedBattlefield[x][y]);
-            }
-        }
-    }
-
-    // Compare two grids and return false if a collision is found
-    public boolean Compare(int[][] grid, int[][] gridtwo) {
-        boolean collide = false;
-        for(int y = 0; y < 8; y++) {
-            for(int x = 0; x < 8; x++) {
-                while(collide = false) {
-
-                    if (grid[x][y] != gridtwo[x][y]) {
-                        grid[x][y] = gridtwo[x][y];
-                    } else {
-                        collide = true;
-                    }
-
-                }
-            }
-        }
-
-        if(collide = true) {
-            return false;
-        } else {
-                return true;
-        }
-    }
+    return str;
+  }
 }
