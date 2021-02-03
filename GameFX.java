@@ -98,9 +98,16 @@ public class GameFX {
       for(int y = 0; y < 8; y++){
         int res = this.EnemyField.At(x, y);
 
-        this.EnemyBtns[x][y].setText((res >= 10 ? res : "X") + "");
+        this.EnemyBtns[x][y].setText(this.IntToImg(res));
       }
     }
+  }
+  private String IntToImg(int res) {
+    if(res == 10) return "W";
+    if(res > 10) return "S";
+
+    return "X";
+    // return (res >= 10 ? res : "X")
   }
   public void PCMove() {
     // TODO: If hits, do this.PCMove();
