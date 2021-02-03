@@ -30,6 +30,16 @@ public class Battlefield {
       {0,0,0,0,0,0,0,0}};
   }
 
+  // Reveal an X Y coordinate
+  public boolean Reveal(int x, int y) {
+    if(this.Grid[x][y] >= 10) return false;
+
+    this.Grid[x][y] += 10;
+
+    if(this.Grid[x][y] == 10) return false;
+    else return true;
+  }
+
   // Get the grid
   public int[][] GetGrid() {
     return this.Grid;
