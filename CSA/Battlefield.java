@@ -17,6 +17,7 @@ public class Battlefield {
     this.Grid = this.MakeShip(this.Grid, 4, 4);
     this.Grid = this.MakeShip(this.Grid, 5, 5);
 
+    // Calculate total value
     int temp = 0;
     for(int y = 0; y < 8; y++) { for(int x = 0; x < 8; x++) { temp += this.Grid[x][y] == 0 ? 0 : 1; }}
 

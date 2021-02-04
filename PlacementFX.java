@@ -9,6 +9,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import CSA.Battlefield;
 
+// More UI settings
 public class PlacementFX {
   private Battlefield PlayerField = new Battlefield();
   private Button[][] BtnGrid = new Button[8][8];

@@ -7,6 +7,7 @@ import javafx.stage.Stage;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
+// Menu graphics
 public class MenuFX extends Application {
   @Override
   public void start(Stage primaryStage) {
@@ -39,6 +40,8 @@ public class MenuFX extends Application {
     primaryStage.show();
   }
   public static void main(String[] args) {
+    
+    // Launch program
     launch(args);
   }
 }
