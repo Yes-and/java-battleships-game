@@ -24,6 +24,8 @@ public class GameFX {
   private Label enemyGridL;
   private final GridPane rootPane;
   private Stage PrimaryStage;
+  private int PCX = -1;
+  private int PCY = -1;
   TilePane MenuRoot;
 
   public GameFX(Battlefield playerField, Stage primaryStage, TilePane menuRoot) {
@@ -137,6 +139,7 @@ public class GameFX {
     int hitX = (int) Math.floor(Math.random() * 8);
     int hitY = (int) Math.floor(Math.random() * 8);
 
+    System.out.println(this.PlayerField.At(hitX, hitY));
     if(this.PlayerField.Reveal(hitX, hitY)){
       this.SetTexts();
     }else{
