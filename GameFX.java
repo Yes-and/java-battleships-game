@@ -16,8 +16,11 @@ import javax.swing.plaf.basic.BasicInternalFrameTitlePane.TitlePaneLayout;
 import CSA.Battlefield;
 
 public class GameFX {
+  // Create player and enemy battlefield
   private Battlefield PlayerField = new Battlefield();
   private Battlefield EnemyField = new Battlefield();
+
+  // Create player UI
   private Button[][] PlayerBtns = new Button[8][8];
   private Button[][] EnemyBtns = new Button[8][8];
   private Label playerGridL;
@@ -48,6 +51,7 @@ public class GameFX {
     this.playerGridL.setFont(font);
     rootPane.add(this.playerGridL, 0, 1);
 
+    // Create player grid
     GridPane playerGridPane = new GridPane();
 
     for(int x = 0; x < 8; x++){
@@ -65,6 +69,7 @@ public class GameFX {
     this.enemyGridL.setFont(font);
     rootPane.add(this.enemyGridL, 3, 1);
 
+    // Create enemy grid
     GridPane enemyGridPane = new GridPane();
 
     for(int x = 0; x < 8; x++){
@@ -99,6 +104,8 @@ public class GameFX {
 
     return btn;
   }
+
+  // Render both grids
   private void SetTexts() {
     int PShips = 0;
     int EShips = 0;
@@ -123,8 +130,11 @@ public class GameFX {
       }
     }
 
+    // Conditions for endscreen
     if(PShips == 0) DeclareWinner(false);
     if(EShips == 0) DeclareWinner(true);
+
+    // Number of ships remaining
     this.enemyGridL.setText("PC grid (" + EShips + " ship blocks undiscovered):");
     this.playerGridL.setText("Your grid (" + PShips + " ship blocks undiscovered):");
   }
@@ -135,10 +145,14 @@ public class GameFX {
     return "media/question.png";
     // return (res >= 10 ? res : "X")
   }
+  // Computer AI
   public void PCMove() {
+
+    // Attack random squares
     int hitX = (int) Math.floor(Math.random() * 8);
     int hitY = (int) Math.floor(Math.random() * 8);
 
+    // Attack squares that are nearby a confirmed hits
     if(this.PCX != -1 && this.PCY != -1){
       System.out.println("Nearby!");
       hitX = this.PCX + 1;
@@ -180,6 +194,7 @@ public class GameFX {
       }
     }
 
+    // Confirm hit
     if(this.PlayerField.At(hitX, hitY) > 0 && this.PlayerField.At(hitX, hitY) < 10){
       System.out.println("HITSHIP");
       this.PCX = hitX;
@@ -193,6 +208,8 @@ public class GameFX {
       this.PCMove();
     }
   }
+
+  // Declare winner + render correct image
   public void DeclareWinner(boolean IsPlayer) {
     System.out.println((IsPlayer ? "Player" : "Computer") + " won!");
 
