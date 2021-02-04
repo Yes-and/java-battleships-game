@@ -31,13 +31,18 @@ public class Battlefield {
   }
 
   // Reveal an X Y coordinate
-  public boolean Reveal(int x, int y) {
-    if(this.Grid[x][y] >= 10) return false;
+  public boolean Reveal(int x, int y) { // Returns true if dropround
+    if(this.Grid[x][y] == 0){ // Hit water
+      this.Grid[x][y] = 10;
 
-    this.Grid[x][y] += 10;
+      return true;
+    }else if(this.Grid[x][y] == 10 || this.Grid[x][y] > 10){
+      return false;
+    }else{
+      this.Grid[x][y] += 10;
 
-    if(this.Grid[x][y] == 10) return false;
-    else return true;
+      return false;
+    }
   }
 
   // Get the grid
