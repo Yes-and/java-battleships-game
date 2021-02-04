@@ -30,6 +30,7 @@ public class MenuFX extends Application {
     Label l = new Label("Welcome to a really bad battleships game!");
     l.setFont(font);
     Scene scene = new Scene(root, 300, 300);
+    scene.getStylesheets().add("stylesheet.css");
     root.getChildren().add(l);
     root.getChildren().add(startGameBtn);
     root.getChildren().add(quitBtn);

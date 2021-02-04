@@ -10,6 +10,9 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane.TitlePaneLayout;
+
 import CSA.Battlefield;
 
 public class GameFX {
@@ -20,9 +23,13 @@ public class GameFX {
   private Label playerGridL;
   private Label enemyGridL;
   private final GridPane rootPane;
+  private Stage PrimaryStage;
+  TilePane MenuRoot;
 
   public GameFX(Battlefield playerField, Stage primaryStage, TilePane menuRoot) {
+    this.MenuRoot = menuRoot;
     this.PlayerField = playerField;
+    this.PrimaryStage = primaryStage;
 
     rootPane = new GridPane();
 
@@ -44,6 +51,7 @@ public class GameFX {
     for(int x = 0; x < 8; x++){
       for(int y = 0; y < 8; y++){
         PlayerBtns[x][y] = new Button("");
+        PlayerBtns[x][y].getStyleClass().add("shipBtn");
         PlayerBtns[x][y].setFont(font);
         playerGridPane.add(PlayerBtns[x][y], x, y);
       }
@@ -77,6 +85,7 @@ public class GameFX {
   }
   private Button createEnemyBtn(int x, int y) {
     Button btn = new Button("");
+    btn.getStyleClass().add("shipBtn");
 
     btn.setOnAction(actionEvent -> {
       if(this.EnemyField.Reveal(x, y)){
@@ -112,6 +121,8 @@ public class GameFX {
       }
     }
 
+    if(PShips == 0) DeclareWinner(false);
+    if(EShips == 0) DeclareWinner(true);
     this.enemyGridL.setText("PC grid (" + EShips + " ship blocks undiscovered):");
     this.playerGridL.setText("Your grid (" + PShips + " ship blocks undiscovered):");
   }
@@ -133,6 +144,12 @@ public class GameFX {
 
       this.PCMove();
     }
+  }
+  public void DeclareWinner(boolean IsPlayer) {
+    System.out.println((IsPlayer ? "Player" : "Computer") + " won!");
+
+    WinnerFX winner = new WinnerFX(this.PrimaryStage, this.MenuRoot, IsPlayer);
+    this.PrimaryStage.getScene().setRoot(winner.getRootPane());
   }
   public GridPane getRootPane() {
     return rootPane;
