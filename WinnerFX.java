@@ -25,15 +25,15 @@ public class WinnerFX {
     Image image1 = new Image(playerWon ? "media/youwin.png" : "media/youlose.png", true);
     ImageView view = new ImageView(image1);
     view.getStyleClass().add("midImg");
-    view.setFitHeight(1300);
-    view.setFitWidth(1300);
+    view.setFitHeight(900);
+    view.setFitWidth(900);
     view.setPreserveRatio(true);
 
     rootPane.getChildren().add(view);
 
-    Label winnerL = new Label(playerWon ? "You won!" : "You lost!");
-    winnerL.setFont(font);
-    rootPane.getChildren().add(winnerL);
+    // Label winnerL = new Label(playerWon ? "You won!" : "You lost!");
+    // winnerL.setFont(font);
+    // rootPane.getChildren().add(winnerL);
 
     Button startGameBtn = new Button("Quit to main menu");
     startGameBtn.setFont(font);

@@ -139,7 +139,52 @@ public class GameFX {
     int hitX = (int) Math.floor(Math.random() * 8);
     int hitY = (int) Math.floor(Math.random() * 8);
 
-    System.out.println(this.PlayerField.At(hitX, hitY));
+    if(this.PCX != -1 && this.PCY != -1){
+      System.out.println("Nearby!");
+      hitX = this.PCX + 1;
+      hitY = this.PCY;
+      hitX = Math.max(0, Math.min(7, hitX));
+      hitY = Math.max(0, Math.min(7, hitY));
+
+      if(this.PlayerField.At(hitX, hitY) < 10){
+      }else{
+        hitX = this.PCX - 1;
+        hitY = this.PCY;
+        hitX = Math.max(0, Math.min(7, hitX));
+        hitY = Math.max(0, Math.min(7, hitY));
+
+        if(this.PlayerField.At(hitX, hitY) < 10){
+        }else{
+          hitX = this.PCX;
+          hitY = this.PCY + 1;
+          hitX = Math.max(0, Math.min(7, hitX));
+          hitY = Math.max(0, Math.min(7, hitY));
+
+          if(this.PlayerField.At(hitX, hitY) < 10){
+          }else{
+            hitX = this.PCX;
+            hitY = this.PCY - 1;
+            hitX = Math.max(0, Math.min(7, hitX));
+            hitY = Math.max(0, Math.min(7, hitY));
+
+            if(this.PlayerField.At(hitX, hitY) < 10){
+            }else{
+              this.PCX = -1;
+              this.PCY = -1;
+
+              hitX = (int) Math.floor(Math.random() * 8);
+              hitY = (int) Math.floor(Math.random() * 8);
+            }
+          }
+        }
+      }
+    }
+
+    if(this.PlayerField.At(hitX, hitY) > 0 && this.PlayerField.At(hitX, hitY) < 10){
+      System.out.println("HITSHIP");
+      this.PCX = hitX;
+      this.PCY = hitY;
+    }
     if(this.PlayerField.Reveal(hitX, hitY)){
       this.SetTexts();
     }else{
