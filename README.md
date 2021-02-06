@@ -1,14 +1,14 @@
 # csa-grasp-4
 
-# This app uses the JavaFX library, which is available from [here](https://gluonhq.com/products/javafx/).
+> This app uses the JavaFX library, which is available from [here](https://gluonhq.com/products/javafx/).
 
 > Welcome to the battleships game! You play against a computer AI to see who sinks the opponents ships first.
 
 * You can check out comments to understand what functions do
 
 # Division of roles
-## Adam - Implementing JavaFX, computer AI
-## Vojta - Classes and main functions, working with arrays
+> Adam - Implementing JavaFX, computer AI
+> Vojta - Classes and main functions, working with arrays
 
 # How to build and run the app:
 
