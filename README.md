@@ -4,10 +4,11 @@
 
 > Welcome to the battleships game! You play against a computer AI to see who sinks the opponents ships first.
 
-* You can check out comments to understand what functions do
+> Comments explain what methods do
 
 # Division of roles
 > Adam - Implementing JavaFX, computer AI
+
 > Vojta - Classes and main functions, working with arrays
 
 # How to build and run the app:
