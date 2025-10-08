@@ -1,4 +1,4 @@
-# csa-grasp-4
+# Battleships in JavaFX
 
 > This app uses the JavaFX library, which is available from [here](https://gluonhq.com/products/javafx/).
 
